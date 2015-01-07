@@ -3,7 +3,13 @@ set nocompatible | filetype indent plugin on | syn on
 "Vim addon manager
 set rtp+=~/.vim/vim-addons/vim-addon-manager
 let g:vim_addon_manager = {}
-call vam#ActivateAddons([])
+call vam#ActivateAddons()
+VAMActivate fugitive
+VAMActivate ctrlp
+let scripts = []
+call add(scripts, {'names': ['fugitive', 'ctrlp'], 'tag': 'default'})
+call vam#Scripts(scripts, {'tag_regex': 'default'})
+
 
 autocmd! bufwritepost .vimrc source %
 set nu
